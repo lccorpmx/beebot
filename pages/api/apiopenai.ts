@@ -12,15 +12,16 @@ export default async function handler(
     });
     const openai = new OpenAIApi(configuration);
   
-    const promptVariable =  `${process.env.PROMPTTRAIN} ${req.body.prompt}`
+    const promptVariable =  `${process.env.PROMPTTRAIN} ${req.body.prompt}.`
 
+    console.log(promptVariable)
   
     try {
         const completionApi = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: promptVariable,
             temperature: 0.7,
-            max_tokens: 400,
+            max_tokens: 800,
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
